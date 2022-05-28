@@ -7,7 +7,6 @@ export default function handler(req, res) {
   let timeOut = process.env.NEXT_TIME_EXECUTION
   let imageID = req.query.id
   console.log(imageID)
-  res.json({ message: 'success!' })
 
   const deleteWrapper = async (imageID) => {
     let deleteFromStorage = await deleteImageFromStorage(imageID)
@@ -49,5 +48,6 @@ export default function handler(req, res) {
     let execute = await deleteWrapper(imageID)
     execute == false && console.log('failed delete from storage and DB')
   }, timeOut);
+  res.json({ message: 'success!' })
 }
 
