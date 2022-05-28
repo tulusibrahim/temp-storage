@@ -15,6 +15,7 @@ export default function Home() {
   const [view, setView] = useState('detail')
   const [openMenu, setOpenMenu] = useState(null)
   const storageName = 'temp-storage'
+  const baseURL = 'https://temp-storage.vercel.app/api/'
   let inputRef = useRef()
   // console.log(Date.now())
 
@@ -122,7 +123,7 @@ export default function Home() {
 
   const requestDelete = async (imageID, retry = 3) => {
     try {
-      let request = await fetch('http://localhost:3000/api/' + imageID)
+      let request = await fetch(baseURL + imageID)
       console.log('request delete made!')
       console.log(await request.json())
     } catch (error) {
@@ -142,7 +143,7 @@ export default function Home() {
   }
 
   const deleteImageFromStorage = async (fileName, retry = 3) => {
-    let deleteImage = await fetch('http://localhost:3000/api/' + fileName, { method: 'POST' })
+    let deleteImage = await fetch(baseURL + fileName, { method: 'POST' })
     let json = await deleteImage.json()
     console.log(json)
     // let deleteImage = await supabase.storage.from(storageName).remove([fileName])
