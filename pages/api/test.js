@@ -9,5 +9,6 @@ export default function handler(req, res) {
         true,
         // 'America/Los_Angeles'
     );
+    job.start()
     res.send({ message: 'success!' })
 }
