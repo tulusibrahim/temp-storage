@@ -15,7 +15,7 @@ export default function Home() {
   const [view, setView] = useState('detail')
   const [openMenu, setOpenMenu] = useState(null)
   const storageName = 'temp-storage'
-  const baseURL = 'http://localhost:3000/api/'
+  const baseURL = 'https://temp-storage.vercel.app/api/'
   let inputRef = useRef()
   // console.log(Date.now())
 

@@ -8,19 +8,19 @@ export default function handler(req, res) {
   let imageID = req.query.id
   console.log(imageID)
 
-  deleteWrapper(imageID)
+  deleteWrapper(imageID, timeOut)
 
   res.json({ message: 'success!' })
 }
 
-const deleteWrapper = (imageID) => {
+const deleteWrapper = (imageID, timeOut) => {
   setTimeout(async () => {
     let deleteFromStorage = await deleteImageFromStorage(imageID)
     let deleteFromDB = await deleteImageReferenceFromDB(imageID)
     console.log('deleteFromStorage', deleteFromStorage)
     console.log('deleteFromDB', deleteFromDB)
     return deleteFromDB
-  }, 5000);
+  }, timeOut);
 }
 
 const deleteImageFromStorage = async (fileName, retry = 3) => {
